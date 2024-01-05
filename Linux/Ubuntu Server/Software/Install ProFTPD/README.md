@@ -1,4 +1,4 @@
-## How To Install ProFTPD
+## Install ProFTPD
 Install required packages
 ```
 apt install -y proftpd-basic
