@@ -118,7 +118,7 @@ nano /etc/fail2ban/jail.local
 
 Add / Edit
 [DEFAULT]
-ignoreip = 127.0.0.1/8 165.255.245.212
+ignoreip = 127.0.0.1/8 172.30.224.216
 bantime = 3600
 destemail = admin@example.com
 sendername = Server Fail2Ban
