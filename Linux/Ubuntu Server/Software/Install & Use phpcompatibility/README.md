@@ -1,65 +1,28 @@
 ## Install & Use phpcompatibility
-Install Composer
-
+Install PHP_CodeSniffer
 ```
-php -r "readfile('https://getcomposer.org/installer');" | php
-```
-
----
-
-Update php_codesniffer and phpcompatibility
-
-Edit composer.json and Add:
-```
-{
-    "require-dev": {
-        "squizlabs/php_codesniffer": "*",
-        "phpcompatibility/php-compatibility": "*"
-    },
-        "prefer-stable" : true,
-        "scripts": {
-                "post-install-cmd": "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility",
-                "post-update-cmd" : "\"vendor/bin/phpcs\" --config-set installed_paths vendor/phpcompatibility/php-compatibility"
-        }
-}
+composer require --dev squizlabs/php_codesniffer
 ```
 
-Then run
+Install PHPCompatibility
 ```
-php composer.phar install
-```
-
----
-
-Update Composer
-
-```
-php composer.phar selfupdate
+composer require --dev phpcompatibility/php-compatibility
 ```
 
----
-
-Update Vendors
-
+Register PHPCompatibility with PHP_CodeSniffer
 ```
-php composer.phar update
+vendor/bin/phpcs --config-set installed_paths vendor/phpcompatibility/php-compatibility
 ```
 
----
-
-Check Installed Vendors
-
+Usage, output to file
 ```
-php composer.phar show -i
+vendor/bin/phpcs -p </path/to/code> --standard=PHPCompatibility --runtime-set testVersion <php.version>- --extensions=php -d memory_limit=2048M --report-<report_output_type>=</path/to/reportFile>
 ```
 
----
-
-Running phpcompatibility
-
+Getting PHPCompatibility Help
 ```
-/path/to/composer-vendor/bin/phpcs -p /path/to/php-code/ --standard=PHPCompatibility --runtime-set testVersion 7.2 --report-full=/path/to/report/report.txt 
-
-
-/root/apps/vendor/bin/phpcs -p /root/workspace/CodeIgniter-3.1.10/ --standard=PHPCompatibility --runtime-set testVersion 7.2 --report-full=/var/www/html/sudo.d3v.sh/ci3-report.txt
+vendor/bin/phpcs --help
 ```
+
+Source: https://cu.be/a-comprehensive-guide-to-using-phpcompatibility-in-your-project/
+Repo: https://github.com/PHPCompatibility/PHPCompatibility
