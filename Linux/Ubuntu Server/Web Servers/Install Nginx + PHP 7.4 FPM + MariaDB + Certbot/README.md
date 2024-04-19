@@ -133,11 +133,15 @@ server {
          return 405;
     }
     
-    add_header Content-Security-Policy "default-src 'self' http: https: data: blob: 'unsafe-inline'" always;
-    add_header X-Frame-Options "DENY"; #Optional, prevents pages from being iframes
-    add_header X-XSS-Protection "1; mode=block";
-    add_header X-Content-Type-Options nosniff;
     add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; preload";
+    add_header Content-Security-Policy "default-src 'self' https: data: blob:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' 'unsafe-inline' https: data: blob:; font-src font-src 'self' 'unsafe-inline' https: data: blob:; frame-src 'self' https:; child-src 'self' https:; frame-ancestors 'self' https:; form-action 'self' https:; upgrade-insecure-requests;";
+    add_header Referrer-Policy "no-referrer, strict-origin";
+    add_header Permissions-Policy "accelerometer=*, ambient-light-sensor=*, autoplay=*, battery=*, camera=*, cross-origin-isolated=*, display-capture=*, document-domain=*, encrypted-media=*, execution-while-not-rendered=*, execution-while-out-of-viewport=*, fullscreen=*, geolocation=*, gyroscope=*, keyboard-map=*, magnetometer=*, microphone=*, midi=*, navigation-override=*, payment=*, picture-in-picture=*, screen-wake-lock=*, sync-xhr=*, usb=*, web-share=*, xr-spatial-tracking=*, clipboard-read=*, clipboard-write=*, gamepad=*, speaker-selection=*, conversion-measurement=*, focus-without-user-activation=*, hid=*, idle-detection=*, interest-cohort=*, serial=*, sync-script=*, trust-token-redemption=*, window-placement=*, vertical-scroll=*";
+    add_header X-Content-Type-Options "nosniff";
+    add_header X-Frame-Options "SAMEORIGIN";
+    add_header X-XSS-Protection "1; mode=block";
+    add_header X-Permitted-Cross-Domain-Policies "none";
+    add_header Expect-Ct "max-age=0";
     
     location / {
         try_files $uri $uri/ /index.php?$query_string;
