@@ -129,7 +129,7 @@ server {
     }
     
     add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; preload";
-    add_header Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; frame-src 'self' https:; child-src 'self' https:; frame-ancestors 'self' https:; form-action 'self' https:; upgrade-insecure-requests;";
+    add_header Content-Security-Policy "default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; frame-src 'self' https: blob: data:; child-src 'self' https: blob: data:; frame-ancestors 'self' https: blob: data:; form-action 'self' https: blob: data:; upgrade-insecure-requests;";
     add_header Referrer-Policy "no-referrer, strict-origin";
     add_header Permissions-Policy "accelerometer=*, autoplay=*, camera=*, cross-origin-isolated=*, display-capture=*, encrypted-media=*, fullscreen=*, geolocation=*, gyroscope=*, keyboard-map=*, magnetometer=*, microphone=*, midi=*, payment=*, picture-in-picture=*, screen-wake-lock=*, sync-xhr=*, xr-spatial-tracking=*, clipboard-read=*, clipboard-write=*, gamepad=*, hid=*, idle-detection=*, interest-cohort=*, window-placement=*";
     add_header X-Content-Type-Options "nosniff";
