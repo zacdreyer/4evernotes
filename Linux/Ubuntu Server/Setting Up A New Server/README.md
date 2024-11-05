@@ -145,7 +145,7 @@ service fail2ban restart
 **Install Antivirus**
 ```
 apt-get update
-apt-get install -y clamav
+apt-get install -y clamav clamav-daemon
 ps -aux | grep 'freshclam'
 freshclam
 crontab -e
